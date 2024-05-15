@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <body style="background-image: url('s.jpg'); background-size: cover; background-position: center;"></body>
+
+    <title>Calculadora de Indice de Masa Corporal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<nav>
+    <h2>Registro Nacional de Tenencia <br> Responsable de Mascotas y Animales de Compañía</h2> 
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="inicio_sesion.html">Iniciar sesion</a></li>
+        <li><a href="1.html">Registro de mascota</a></li>
+        <li><a href="IMC.html">Calcular el IMC</a></li>
+        <li><a href="años_mascota.html">Calcula la edad de tu mascota</a></li>
+        <li><a href="list.html">Tareas</a></li>
+    </ul>
+</nav>
+<img src="pn1.jpg" alt="">
+<body>
+    <div class="container">
+        <h1>Calculadora de Indice de Masa Corporal</h1>
+        <p>Introduce el peso (en kg):</p>
+        <input type="number" id="pesoInput" placeholder="Peso en kg">
+        <p>Introduce la altura (en metros):</p>
+        <input type="number" id="alturaInput" placeholder="Altura en metros">
+        <button onclick="calcularIMCMascota()">Calcular</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function calcularIMCMascota() {
+            var peso = parseFloat(document.getElementById('pesoInput').value);
+            var altura = parseFloat(document.getElementById('alturaInput').value);
+            if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
+                alert("Por favor, introduce valores válidos para peso y altura.");
+                return;
+            }
+            
+            var IMC = peso / (altura * altura);
+            var resultado = document.getElementById('resultado');
+            resultado.textContent = "El índice de masa corporal (IMC): " + IMC.toFixed(2);
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <body style="background-image: url('s.jpg'); background-size: cover; background-position: center;"></body>
+
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+
+
+        li.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .actions button {
+            margin-left: 10px;
+            background-color: #dc3545;
+        }
+
+        .actions button:hover {
+            background-color: #c82333;
+        }
+
+        .edit-button {
+            background-color: #ffc107;
+        }
+
+        .edit-button:hover {
+            background-color: #e0a800;
+        }
+    </style>
+</head>
+<nav>
+    <h2>Registro Nacional de Tenencia <br> Responsable de Mascotas y Animales de Compañía</h2> 
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="inicio_sesion.html">Iniciar sesion</a></li>
+        <li><a href="1.html">Registro de mascota</a></li>
+        <li><a href="IMC.html">Calcular el IMC</a></li>
+        <li><a href="años_mascota.html">Calcula la edad de tu mascota</a></li>
+        <li><a href="list.html">Tareas</a></li>
+    </ul>
+</nav>
+<img src="pn1.jpg" alt="">
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <form id="todo-form">
+            <input type="text" id="task-name" placeholder="Nombre de la tarea">
+            <input type="text" id="task-desc" placeholder="Descripción de la tarea">
+            <button type="submit">Agregar Tarea</button>
+        </form>
+        <ul id="todo-list"></ul>
+    </div>
+
+    <script>
+        document.getElementById('todo-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            addTask();
+        });
+
+        function addTask() {
+            const taskName = document.getElementById('task-name').value;
+            const taskDesc = document.getElementById('task-desc').value;
+
+            if (taskName === '' || taskDesc === '') {
+                alert('Por favor, completa todos los campos.');
+                return;
+            }
+
+            const taskList = document.getElementById('todo-list');
+            const li = document.createElement('li');
+            li.innerHTML = `<span>${taskName}: ${taskDesc}</span>
+                            <div class="actions">
+                                <button onclick="toggleComplete(this)">Completar</button>
+                                <button class="edit-button" onclick="editTask(this)">Editar</button>
+                                <button onclick="removeTask(this)">Eliminar</button>
+                            </div>`;
+            taskList.appendChild(li);
+
+            document.getElementById('task-name').value = '';
+            document.getElementById('task-desc').value = '';
+        }
+
+        function toggleComplete(button) {
+            const li = button.parentElement.parentElement;
+            li.classList.toggle('completed');
+        }
+
+        function editTask(button) {
+            const li = button.parentElement.parentElement;
+            const taskInfo = li.firstChild.textContent.split(': ');
+            document.getElementById('task-name').value = taskInfo[0];
+            document.getElementById('task-desc').value = taskInfo[1];
+            li.remove();
+        }
+
+        function removeTask(button) {
+            const li = button.parentElement.parentElement;
+            li.remove();
+        }
+    </script>
+</body>
+</html>

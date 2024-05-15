@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <body style="background-image: url('s.jpg'); background-size: cover; background-position: center;"></body>
+
+    <title>Calculadora de Edad de Perro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<nav>
+    <h2>Registro Nacional de Tenencia <br> Responsable de Mascotas y Animales de Compañía</h2> 
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="inicio_sesion.html">Iniciar sesion</a></li>
+        <li><a href="1.html">Registro de mascota</a></li>
+        <li><a href="IMC.html">Calcular el IMC</a></li>
+        <li><a href="años_mascota.html">Calcula la edad de tu mascota</a></li>
+        <li><a href="list.html">Tareas</a></li>
+    </ul>
+</nav>
+<img src="pn1.jpg" alt="">
+<body>
+    <div class="container">
+        <h1>Calcula la de Edad de tu Mascota</h1>
+        <p>Introduce la edad de tu mascota en años para calcular su edad en años humanos:</p>
+        <input type="number" id="edadPerroInput" placeholder="Introduce la edad de tu perro">
+        <button onclick="calcularEdadPerro()">Calcular</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function calcularEdadPerro() {
+            var edadPerro = document.getElementById('edadPerroInput').value;
+            edadPerro = parseInt(edadPerro);
+            if (isNaN(edadPerro)) {
+                alert("Por favor, introduce un número válido para la edad del perro.");
+                return;
+            }
+            
+            var resultado = document.getElementById('resultado');
+            if (edadPerro <= 0) {
+                resultado.textContent = "La edad del perro debe ser mayor que cero.";
+            } else if (edadPerro === 1) {
+                resultado.textContent = "La edad del perro es aproximadamente 10.5 años humanos.";
+            } else if (edadPerro === 2) {
+                resultado.textContent = "La edad del perro es aproximadamente 21 años humanos.";
+            } else {
+                var edadHumana = 21 + (edadPerro - 2) * 4;
+                resultado.textContent = "La edad del perro es aproximadamente " + edadHumana + " años humanos.";
+            }
+        }
+    </script>
+</body>
+</html>
+

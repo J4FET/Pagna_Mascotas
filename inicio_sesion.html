@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <body style="background-image: url('s.jpg'); background-size: cover; background-position: center;"></body>
+
+    <title>Registro de Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+
+        .facebook-link {
+            text-align: center;
+            margin-top: 10px;
+            color: #3b5998;
+        }
+
+        .facebook-link a {
+            color: #3b5998;
+            text-decoration: none;
+        }
+
+        .facebook-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<nav>
+    <h2>Registro Nacional de Tenencia <br> Responsable de Mascotas y Animales de Compañía</h2> 
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="inicio_sesion.html">Iniciar sesion</a></li>
+        <li><a href="1.html">Registro de mascota</a></li>
+        <li><a href="IMC.html">Calcular el IMC</a></li>
+        <li><a href="años_mascota.html">Calcula la edad de tu mascota</a></li>
+        <li><a href="list.html">Tareas</a></li>
+    </ul>
+</nav>
+<img src="pn1.jpg" alt="">
+<body>
+    <div class="container">
+        <h1>Registro de Usuario</h1>
+        <label for="register-firstname">Nombre</label>
+        <input type="text" id="register-firstname" placeholder="Introduce tu nombre">
+        <label for="register-lastname">Apellidos</label>
+        <input type="text" id="register-lastname" placeholder="Introduce tus apellidos">
+        <label for="register-birthdate">Fecha de Nacimiento</label>
+        <input type="date" id="register-birthdate" placeholder="Introduce tu fecha de nacimiento">
+        <button onclick="registrarse()">Registrar</button>
+        <p class="message" id="register-message"></p>
+        <div class="link">
+            <a href="login.html">¿Ya tienes una cuenta? Iniciar Sesión</a>
+        </div>
+        <div class="facebook-link">
+            <a href="#">Iniciar Sesión con Facebook</a>
+        </div>
+        <div class="link">
+            <a href="#">¿Has olvidado tu contraseña?</a>
+        </div>
+    </div>
+
+    <script>
+        function registrarse() {
+            var firstname = document.getElementById('register-firstname').value.trim();
+            var lastname = document.getElementById('register-lastname').value.trim();
+            var birthdate = document.getElementById('register-birthdate').value;
+
+            if (!firstname || !lastname || !birthdate) {
+                document.getElementById('register-message').textContent = "Por favor, completa todos los campos.";
+                return;
+            }
+
+            var initials = firstname.charAt(0).toLowerCase() + lastname.split(' ').map(name => name.charAt(0).toLowerCase()).join('');
+            var birthdateFormatted = birthdate.replace(/-/g, '').slice(2);
+            var email = initials + birthdateFormatted + "@gmail.com";
+
+            document.getElementById('register-message').textContent = "Registro exitoso. Tu correo es: " + email;
+        }
+    </script>
+</body>
+</html>
